@@ -32,7 +32,7 @@ object BuildDef extends Build {
 		scalaVersion := "2.10.1"
 	)
 
-	val Bytefrog = file("../bytefrog")
+	val Bytefrog = file("./bytefrog")
 	lazy val Agent = ProjectRef(Bytefrog, "Agent")
 	lazy val Shared = ProjectRef(Bytefrog, "Common")
 	lazy val HQ = ProjectRef(Bytefrog, "HQ")
