@@ -1,0 +1,8 @@
+.help-popup {
+	-fx-border-color: black;
+	-fx-border-width: 0.125em;
+	-fx-opacity: 0.85;
+}
+
+.web-view {
+}

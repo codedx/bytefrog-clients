@@ -1,0 +1,9 @@
+.trace-package-display-control #sort-label {
+	-fx-padding: 0 0.25em 0 0;
+}
+
+.trace-package-display-control #list-grid-pane {
+	-fx-hgap: 0.625em;
+	-fx-vgap: 0;
+	-fx-padding: 0.25em;
+}

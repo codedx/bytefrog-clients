@@ -1,0 +1,70 @@
+.label {
+	-fx-text-fill: #292929;
+}
+
+.selectable-label {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-padding: 0;
+}
+
+.title {
+	-fx-font-weight: bold;
+}
+
+.control-label {
+	-fx-font-weight: bold;
+}
+
+.help-icon .icon-shape {
+	-fx-fill: #6A6A6A;
+}
+
+.help-icon:hover .icon-shape {
+	-fx-fill: #292929;
+}
+
+#trace-sidebar {
+	-fx-background-color: #CCCCCC;
+	-fx-spacing: 0.125em;
+}
+
+#trace-sidebar .title {
+	-fx-text-fill: #6A6A6A;
+}
+
+#trace-time {
+	-fx-font-size: 1em;
+	-fx-font-weight: bold;
+}
+
+#trace-main-area {
+	-fx-background-color: #DDDDDD;
+}
+
+#trace-main-area .vbox {
+	-fx-spacing: 0.125em;
+}
+
+#trace-main-area .title {
+	-fx-text-fill: #6A6A6A;
+}
+
+#trace-main-area .trace-stat-label {
+	-fx-font-size: 0.875em;
+	-fx-font-weight: bold;
+}
+
+#disk-space .progress-bar {
+	-fx-opacity: 0.4;
+	-fx-accent: #6A6A6A;
+}
+
+.trace-package-display-control {
+
+}
+
+.trace-segment-graphic {
+	-fx-fill: #6A6A6A;
+}

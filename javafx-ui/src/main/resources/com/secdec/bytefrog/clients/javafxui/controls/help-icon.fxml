@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root type="javafx.scene.layout.StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" styleClass="help-icon" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Circle id="" fill="#292929" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="icon-shape" StackPane.alignment="CENTER" />
+    <Text fill="WHITE" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon-text" text="?" StackPane.alignment="CENTER">
+      <font>
+        <Font name="System Bold" size="13.0" />
+      </font>
+    </Text>
+  </children>
+</fx:root>

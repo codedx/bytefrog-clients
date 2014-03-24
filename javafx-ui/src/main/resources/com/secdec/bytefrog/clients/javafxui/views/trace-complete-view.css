@@ -1,0 +1,10 @@
+#new-trace-button {
+	-fx-base: #2B78E4;
+	-fx-text-fill: white;
+}
+
+#new-trace-button #new-trace-graphic {
+	-fx-fill: transparent;
+	-fx-stroke: white;
+	-fx-stroke-width: 0.1125em;
+}

@@ -1,0 +1,47 @@
+body {
+	background-color: black;
+	margin: 0;
+	padding: 0;
+}
+
+#content {
+	padding: 0.3125em;
+	color: white;
+}
+
+#content h1, #content h2 {
+}
+
+#content h1 {
+	font-weight: 400;
+	font-size: 1.375em;
+	margin-bottom: 0.5em;
+}
+
+#content h1:first-child {
+	margin-top: 0;
+}
+
+#content h2 {
+	font-weight: bold;
+	font-size: 1em;
+	margin-bottom: 0.25em;
+}
+
+#content p {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 0.875em;
+	margin: 0;
+	margin-top: 0.5em;
+}
+
+#content pre {
+	padding: 0 0.75em;
+	white-space: pre-wrap;
+}
+
+#content code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 0.8125em;
+}

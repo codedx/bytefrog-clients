@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../../../../../../../../target/scala-2.10/classes?>
+<?import com.secdec.bytefrog.clients.javafxui.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.secdec.bytefrog.clients.javafxui.views.ConfigurationController">
+  <children>
+    <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0">
+      <children>
+        <Label id="trace-name-label" styleClass="control-label" text="Trace name">
+          <labelFor>
+            <TextField id="trace-name" fx:id="traceNameField" prefWidth="200.0" />
+          </labelFor>
+        </Label>
+        <HelpIcon helpContent="&lt;h1&gt;Trace Name&lt;/h1&gt;&#10;&#10;&lt;p&gt;A human-friendly name for the trace. This name, along with the current date and time, helps to determine the filename of the trace output.&lt;/p&gt;">
+          <HBox.margin>
+            <Insets fx:id="x4" />
+          </HBox.margin>
+        </HelpIcon>
+      </children>
+    </HBox>
+    <fx:reference source="traceNameField" />
+    <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0">
+      <children>
+        <Label id="agent-configuration-label" styleClass="control-label" text="Agent configuration string">
+          <labelFor>
+            <TextField id="agent-configuration" fx:id="agentConfigurationField" editable="false" maxWidth="1.7976931348623157E308" prefWidth="-1.0" styleClass="label, selectable-label" text="-javaagent:path/to/agent.jar=localhost:9100;trace.log" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+          </labelFor>
+        </Label>
+        <HelpIcon helpContent="&lt;h1&gt;Agent Configuration String&lt;/h1&gt;&#10;&#10;&lt;p&gt;This is the agent configuration required to collect trace data. Click 'copy' to copy the configuration string to your clipboard, and then add it to the Java command line arguments.&lt;/p&gt;&#10;&#10;&lt;p&gt;For applications that are run by a launcher, it may be necessary to take extra steps to insert the agent configuration, such as editing a configuration file.&lt;/p&gt;&#10;&#10;&lt;h2&gt;Advanced Users&lt;/h2&gt;&#10;&#10;&lt;p&gt;You may tweak the IP address and port number as required. Both hostnames and IP addresses are accepted.&lt;/p&gt;" />
+      </children>
+      <VBox.margin>
+        <Insets top="6.0" fx:id="x1" />
+      </VBox.margin>
+    </HBox>
+    <GridPane id="agent-configuration" hgap="4.0">
+      <children>
+        <fx:reference source="agentConfigurationField" />
+        <Button mnemonicParsing="false" onAction="#copyAgentConfigurationToClipboard" text="Copy" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="-1.0" />
+        <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0" VBox.margin="$x1">
+      <children>
+        <Label id="include-packages-label" styleClass="control-label" text="Include packages in trace">
+          <labelFor>
+            <TextArea id="include-packages" fx:id="includePackagesArea" prefHeight="123.0" prefWidth="572.0" promptText="com.acme.*" text="" wrapText="true" />
+          </labelFor>
+        </Label>
+        <HelpIcon helpContent="&lt;h1&gt;Include Package Filters&lt;/h1&gt;&#10;&#10;&lt;p&gt;The filters specified here specify which package(s) trace data is collected for.&lt;/p&gt;&#10;&#10;&lt;h2&gt;Filters&lt;/h2&gt;&#10;&#10;&lt;p&gt;A package name on its own indicates that classes within that package should be traced. Only classes that are a direct descendent of the package are included; sub-packages are ignored. For example, entering &lt;code&gt;com.acme&lt;/code&gt; would trace the &lt;b&gt;com.acme.Main&lt;/b&gt; class but would ignore &lt;b&gt;com.acme.util.Utility&lt;/b&gt;.&lt;/p&gt;&#10;&#10;&lt;p&gt;A package name followed by a wildcard indicates that classes within that package and all sub-packages should be traced. For example, &lt;code&gt;com.acme.*&lt;/code&gt; would trace &lt;b&gt;com.acme.Main&lt;/b&gt; as well as &lt;b&gt;com.acme.util.Utility&lt;/b&gt;.&lt;/p&gt;&#10;&#10;&lt;p&gt;A wildcard may be used as part of a filter to indicate any hierarchy of sub-packages. For example, entering &lt;code&gt;com.acme.*.test&lt;/code&gt; would trace the &lt;b&gt;com.acme.foo.test&lt;/b&gt; package as well as the &lt;b&gt;com.acme.bar.test&lt;/b&gt; package. The rules from above apply in this case as well.&lt;/p&gt;" />
+      </children>
+    </HBox>
+    <fx:reference source="includePackagesArea" />
+    <TitledPane id="advanced-options" fx:id="advancedOptionsPane" animated="false" expanded="false" prefHeight="-1.0" prefWidth="-1.0" text="Advanced options">
+      <content>
+        <GridPane prefHeight="-1.0" prefWidth="-1.0" vgap="4.0">
+          <children>
+            <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+              <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0">
+                  <children>
+                    <Label id="listen-port-label" styleClass="control-label" text="Listen for agent on port">
+                      <labelFor>
+                        <TextField id="listen-port" fx:id="agentPortField" prefWidth="112.0" />
+                      </labelFor>
+                    </Label>
+                    <HelpIcon helpContent="&lt;h1&gt;Listen Port&lt;/h1&gt;&#10;&#10;&lt;p&gt;This controls what port is used for trace agent connections.&lt;/p&gt;" />
+                  </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0">
+                  <children>
+                    <fx:reference source="agentPortField" />
+                    <Label id="agent-listening" fx:id="agentListeningLabel" text="Listening..." HBox.margin="$x4" />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <children>
+                <HBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0">
+                  <children>
+                    <Label id="memory-budget-label" alignment="CENTER_RIGHT" styleClass="control-label" text="Tracing agent memory budget" HBox.margin="$x4">
+                      <labelFor>
+                        <TextField id="memory-budget" fx:id="memoryBudgetField" prefWidth="77.0">
+                          <HBox.margin>
+                            <Insets right="5.0" fx:id="x2" />
+                          </HBox.margin>
+                        </TextField>
+                      </labelFor>
+                    </Label>
+                    <HelpIcon helpContent="&lt;h1&gt;Tracing Memory Budget&lt;/h1&gt;&#10;&#10;&lt;p&gt;This controls how much memory the tracing agent will use.&lt;/p&gt;&#10;&#10;&lt;p&gt;Beware that any memory budgeted for the agent comes out of the heap for the application being traced. It may be necessary to tweak the maximum heap size if &lt;code&gt;OutOfMemoryException&lt;/code&gt;s are encountered.&lt;/p&gt;" />
+                  </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <fx:reference source="memoryBudgetField" />
+                    <ComboBox id="memory-budget-unit" fx:id="memoryBudgetUnitBox">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="KB" />
+                          <String fx:value="MB" />
+                          <String fx:value="GB" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox prefHeight="-1.0" prefWidth="-1.0" spacing="2.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+              <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="8.0">
+                  <children>
+                    <Label id="save-location-label" styleClass="control-label" text="Save traces to">
+                      <labelFor>
+                        <TextField id="save-location" fx:id="traceSaveFolder" prefWidth="-1.0" HBox.hgrow="ALWAYS" HBox.margin="$x2" />
+                      </labelFor>
+                    </Label>
+                    <HelpIcon helpContent="&lt;h1&gt;Save Path&lt;/h1&gt;&#10;&#10;&lt;p&gt;This controls where trace data is saved. All temporary storage files or &lt;code&gt;cptrace&lt;/code&gt; files will be stored in this folder.&lt;/p&gt;" />
+                  </children>
+                </HBox>
+                <HBox prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <fx:reference source="traceSaveFolder" />
+                    <Button id="save-browse" mnemonicParsing="false" onAction="#browseForSave" text="Browse..." />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </content>
+      <VBox.margin>
+        <Insets top="8.0" fx:id="x3" />
+      </VBox.margin>
+    </TitledPane>
+    <Region prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="SOMETIMES" />
+    <HBox id="status-bar" fx:id="statusBar" alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0" style="" VBox.margin="$x3">
+      <children>
+        <Label id="status-label" fx:id="statusLabel" alignment="CENTER_RIGHT" text="status label" HBox.margin="$x2" />
+        <Button id="start-trace-button" fx:id="startTraceButton" cancelButton="false" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#onStartTrace" text="Start Trace" />
+      </children>
+    </HBox>
+  </children>
+  <padding>
+    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@main.css" />
+    <URL value="@configuration-view.css" />
+  </stylesheets>
+</VBox>

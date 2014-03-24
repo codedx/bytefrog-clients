@@ -1,0 +1,16 @@
+#agent-listening {
+	-fx-text-fill: #cc6200;
+}
+
+#storage-available {
+	-fx-font-size: 0.875em;
+	-fx-font-weight: bold;
+}
+
+#status-bar.error {
+	-fx-background-color: rgba(255, 0, 0, 0.3);
+}
+
+#status-bar {
+	-fx-background-color: rgba(0, 128, 0, 0.3);
+}

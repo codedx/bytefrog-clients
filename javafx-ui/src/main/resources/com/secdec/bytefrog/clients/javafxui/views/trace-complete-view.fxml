@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-classpath-element ../../../../../../../../../target/scala-2.10/classes?>
+<?import com.secdec.bytefrog.clients.javafxui.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox minHeight="600.0" minWidth="600.0" prefHeight="-1.0" prefWidth="-1.0" spacing="14.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.secdec.bytefrog.clients.javafxui.views.TraceCompleteController">
+  <children>
+    <BorderPane prefHeight="-1.0" prefWidth="-1.0">
+      <center>
+        <HBox id="trace-main-area" prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <VBox prefHeight="-1.0" prefWidth="-1.0" styleClass="vbox" HBox.hgrow="ALWAYS">
+              <children>
+                <Label id="trace-size-label" styleClass="title" text="Trace size" VBox.margin="$x1">
+                  <labelFor>
+                    <Label id="trace-size" fx:id="traceSizeLabel" styleClass="trace-stat-label" text="560 events">
+                      <VBox.margin>
+                        <Insets fx:id="x1" />
+                      </VBox.margin>
+                    </Label>
+                  </labelFor>
+                </Label>
+                <fx:reference source="traceSizeLabel" />
+                <Label id="trace-file-label" styleClass="title" text="Trace file" textFill="BLACK">
+                  <labelFor>
+                    <TextField id="trace-file" fx:id="traceFileField" editable="false" maxWidth="1.7976931348623157E308" prefWidth="-1.0" styleClass="label, selectable-label, trace-stat-label" text="/some/path/to/some/trace/file" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                  </labelFor>
+                  <VBox.margin>
+                    <Insets top="8.0" />
+                  </VBox.margin>
+                </Label>
+                <GridPane hgap="4.0">
+                  <children>
+                    <fx:reference source="traceFileField" />
+                    <Button mnemonicParsing="false" onAction="#openTraceOutputFolder" text="Open folder..." GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="-1.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="-1.0" prefWidth="-1.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </children>
+              <padding>
+                <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+              </padding>
+            </VBox>
+          </children>
+        </HBox>
+      </center>
+      <left>
+        <VBox id="trace-sidebar" prefHeight="200.0" prefWidth="135.0">
+          <children>
+            <Label id="trace-name-label" styleClass="title" text="Trace name" textFill="BLACK">
+              <labelFor>
+                <Label id="trace-name" fx:id="traceNameLabel" text="Application to trace" textOverrun="CENTER_ELLIPSIS">
+                  <VBox.margin>
+                    <Insets left="15.0" fx:id="x2" />
+                  </VBox.margin>
+                </Label>
+              </labelFor>
+              <VBox.margin>
+                <Insets left="15.0" top="10.0" />
+              </VBox.margin>
+            </Label>
+            <fx:reference source="traceNameLabel" />
+            <Label id="trace-time-label" styleClass="title" text="Trace time" textFill="BLACK">
+              <labelFor>
+                <Label id="trace-time" fx:id="traceTimeLabel" text="00:24.025" VBox.margin="$x2" />
+              </labelFor>
+              <VBox.margin>
+                <Insets left="15.0" top="60.0" />
+              </VBox.margin>
+            </Label>
+            <fx:reference source="traceTimeLabel" />
+            <Button id="new-trace-button" fx:id="newTraceButton" mnemonicParsing="false" onAction="#onNewTrace" text="New trace">
+              <graphic>
+                <Rectangle id="new-trace-graphic" arcHeight="5.0" arcWidth="5.0" height="13.0" strokeLineCap="SQUARE" strokeType="INSIDE" width="13.0" x="0.0" />
+              </graphic>
+              <VBox.margin>
+                <Insets left="15.0" top="15.0" />
+              </VBox.margin>
+            </Button>
+          </children>
+        </VBox>
+      </left>
+      <VBox.margin>
+        <Insets left="-8.0" right="-8.0" top="6.0" />
+      </VBox.margin>
+    </BorderPane>
+    <SplitPane fx:id="packageSegmentSplitPane" dividerPositions="0.5" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+      <items>
+        <TracePackageDisplayControl fx:id="tracePackagesDisplay" prefHeight="-1.0" prefWidth="-1.0" />
+        <VBox fx:id="segmentListVBox" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <SegmentControl id="trace-segment-list" fx:id="segmentList" focusTraversable="false" readOnly="true" VBox.vgrow="ALWAYS" />
+            <Label id="no-trace-segment-label" fx:id="noSegmentLabel" styleClass="title" text="No segments were created during the trace.">
+              <VBox.margin>
+                <Insets left="3.0" />
+              </VBox.margin>
+            </Label>
+          </children>
+        </VBox>
+      </items>
+    </SplitPane>
+  </children>
+  <padding>
+    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@main.css" />
+    <URL value="@trace-complete-view.css" />
+  </stylesheets>
+</VBox>
